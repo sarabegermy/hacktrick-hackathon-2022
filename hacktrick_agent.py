@@ -1,7 +1,10 @@
-from hacktrick_ai_py.agents.agent import Agent, AgentPair
-from hacktrick_ai_py.mdp.hacktrick_mdp import HacktrickState, Recipe
-from hacktrick_ai_py.mdp.actions import Action
-from hacktrick_rl.rllib.rllib import RlLibAgent, load_agent_pair
+from hacktrick_ai.src.hacktrick_rl.rllib.hacktrick_ai_py.agents.agent import Agent, AgentPair
+from hacktrick_ai.src.hacktrick_rl.rllib.hacktrick_ai_py.mdp.hacktrick_mdp import HacktrickState, Recipe
+from hacktrick_ai.src.hacktrick_rl.rllib.hacktrick_ai_py.mdp.actions import Action
+from hacktrick_ai.src.hacktrick_rl.rllib.rllib import RlLibAgent, load_agent_pair
+
+#This one is added
+import HacktrickGridworld
 
 
 class MainAgent(Agent):
@@ -14,6 +17,11 @@ class MainAgent(Agent):
         # You should change your action value to a compatible Action value from the Action class in Hacktric_ai
         # You do not need to implement the action_probs but it is basically the probability distribution of actions
         action, action_probs = Action.STAY, {}
+        grid = HacktrickGridworld()
+        dispener_coordinates = grid.get_container_dispenser_locations()
+        print(dispener_coordinates)
+        #get_projector_dispenser_locations
+        #get_laptop_dispenser_locations
         return action, action_probs
 
 
